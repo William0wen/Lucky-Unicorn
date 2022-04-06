@@ -40,7 +40,7 @@ while play_again != "x" and balance != 0:
             balance -= .5
 
     print(f"Round {rounds_played}: Token: {token}, balance: ${balance:.2f}.")
-    play_again = input("Do you want to play another round?\n<enter> to play again or [x] to exit\n").lower().strip()
+    play_again = input("\nDo you want to play another round?\n<enter> to play again or [x] to exit\n").lower().strip()
 
 
 # output
