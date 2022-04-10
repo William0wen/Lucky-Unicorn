@@ -29,9 +29,21 @@ def yes_no(question_text):
 
 # display instructions function
 def instructions():
-    print("\n\t**** How to Play ****"
-          "\n\tThe rules of the game go here"
-          "\n")
+    print(formatter("*", "How to Play"))
+    print("\nChoose a starting amount to play with - between $1 and $10")
+    print("\nThen press <enter> to play. You will get a random token which might "
+          "\nbe a horse, a zebra, a donkey or a unicorn.")
+    print("\nIt costs $1 to play each round but, depending on your prize, you "
+          "\ncould win your money back. These are the payout amounts:"
+          "\n\tUnicorn: $5 (balance increases by $4)"
+          "\n\tHorse: $0.50 (balance decreases by $0.50)"
+          "\n\tZebra: $0.50 (balance decreases by $0.50)"
+          "\n\tDonkey: $0 (balance decreases by $1)")
+    print("\nSee if you can get less donkeys, more unicorns, and finish with "
+          "\nmore money than you started with.\n")
+
+    print("*" * 50)
+    print()
 
 
 # number checking function
@@ -62,36 +74,40 @@ def generate_token(balance):
     play_again = ""
 
     while play_again != "x":
-        while balance >= 0:
-            rounds_played += 1
-            number = random.randint(1, 100)
+        rounds_played += 1
+        print(formatter(".", f"Round {rounds_played}"))
+        print()
+        number = random.randint(1, 100)
 
-            # Adjust balance
-            # If number is between 1 and 5
-            # user gets unicorn
-            if 1 <= number <= 5:
-                token = "unicorn"
-                balance += 4
-                print(formatter("!", "Congratulations, you got a Unicorn"))
-                print()
+        # Adjust balance
+        # If number is between 1 and 5
+        # user gets unicorn
+        if 1 <= number <= 5:
+            balance += 4
+            print(formatter("!", "Congratulations, you got a Unicorn"))
+            print()
 
-            elif 6 <= number <= 36:
-                token = "donkey"
-                balance -= 1
+        elif 6 <= number <= 36:
+            balance -= 1
+            print(formatter("D", "Bad luck, you got a Donkey"))
+
+        else:
+            # if even number, zebra
+            if number % 2 == 0:
+                balance -= .5
+                print(formatter("Z", "You got a Zebra"))
 
             else:
-                # if even number, zebra
-                if number % 2 == 0:
-                    token = "zebra"
-                    balance -= .5
+                balance -= .5
+                print(formatter("H", "You got a Horse"))
 
-                else:
-                    token = "horse"
-                    balance -= .5
-
-            print(f"Round {rounds_played}: Token: {token}, balance: ${balance:.2f}.")
+        print(f"\nYour balance is now ${balance:.2f}.")
+        if balance < 1:
+            print("\nSorry, you have run out of money.")
+            play_again = "x"
+        else:
             play_again = input("\nDo you want to play another round?\n<enter> to play again or [x] to exit\n").lower().strip()
-        return balance
+
     return balance
 
 
