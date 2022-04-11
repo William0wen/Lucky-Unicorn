@@ -31,8 +31,8 @@ def yes_no(question_text):
 def instructions():
     print(formatter("*", "How to Play"))
     print("\nChoose a starting amount to play with - between $1 and $10")
-    print("\nThen press <enter> to play. You will get a random token which might "
-          "\nbe a horse, a zebra, a donkey or a unicorn.")
+    print("\nThen press <enter> to play. You will get a random token"
+          "\nwhich might be a horse, a zebra, a donkey or a unicorn.")
     print("\nIt costs $1 to play each round but, depending on your prize, you "
           "\ncould win your money back. These are the payout amounts:"
           "\n\tUnicorn: $5 (balance increases by $4)"
@@ -106,7 +106,8 @@ def generate_token(balance):
             print("\nSorry, you have run out of money.")
             play_again = "x"
         else:
-            play_again = input("\nDo you want to play another round?\n<enter> to play again or [x] to exit\n").lower().strip()
+            play_again = input("\nDo you want to play another round?"
+                               "\n<enter> to play again or [x] to exit\n").lower().strip()
 
     return balance
 
