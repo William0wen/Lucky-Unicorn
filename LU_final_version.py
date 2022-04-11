@@ -107,7 +107,8 @@ def generate_token(balance):
             play_again = "x"
         else:
             play_again = input("\nDo you want to play another round?"
-                               "\n<enter> to play again or [x] to exit\n").lower().strip()
+                               "\n<enter> to play again or [x] to"
+                               "exit\n").lower().strip()
 
     return balance
 
