@@ -1,5 +1,5 @@
-"""LU base component - based on base_component_v1
-Components after they have been created and tested.
+"""Lucky Unicorn final version
+by William Owen
 """
 
 import random
